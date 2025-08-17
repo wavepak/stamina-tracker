@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stamina Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header style="grid-column:1 / -1;">
+      <h1>Stamina Tracker</h1>
+      <p>Visualize and share your work stamina as a vertical battery. Drag to set when paused, or hit <strong>Start</strong> to auto-count down each minute.</p>
+    </header>
+
+    <section class="card left">
+      <div class="controls">
+        <div class="row">
+          <div>
+            <label for="total">Total minutes for work</label>
+            <input id="total" type="number" min="1" step="1" value="500" inputmode="numeric" />
+          </div>
+          <div>
+            <label for="left">Minutes left for work</label>
+            <input id="left" type="number" min="0" step="1" value="500" inputmode="numeric" />
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="start" class="primary">Start</button>
+          <button id="pause" disabled>Pause</button>
+        </div>
+      </div>
+
+      <div class="battery-wrap">
+        <div id="battery" class="battery idle" role="slider" aria-label="Stamina" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" tabindex="0">
+          <div class="battery-cap" aria-hidden="true"></div>
+          <div id="fill" class="battery-fill" style="height:100%"></div>
+          <div id="percent" class="percent-label">100%</div>
+          <div id="badge" class="badge green">GREEN</div>
+        </div>
+        <p class="hint">Drag the battery when <strong>paused</strong> to set minutes left.</p>
+      </div>
+      <div id="live" class="sr-only" aria-live="polite"></div>
+    </section>
+
+    <section class="right card">
+      <div class="status-top">
+        <h2>Microsoft Teams‑style status (plain text)</h2>
+        <div class="status-actions">
+          <button id="copy">Copy</button>
+        </div>
+      </div>
+      <pre id="teams" class="status-text"></pre>
+      <p class="hint">This message is plain text with a horizontal bar, a color emoji, and a short description. Paste directly into Teams/Slack/Email.</p>
+    </section>
+
+    <footer>
+      Made for GitHub Pages.
+    </footer>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
